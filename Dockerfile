@@ -9,5 +9,5 @@ RUN npm run build
 FROM nginx:1.19.0
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
-COPY --from=builder /.next/static .
+COPY --from=builder /.next/server .
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
