@@ -1,0 +1,25 @@
+.Typewriter__cursor {
+    border-right-color: orange; /* The typewriter cursor */
+    letter-spacing: .15em; /* Adjust as needed */   
+    color: red;
+    animation-duration: 2s; /* Adjust the duration of the blink */
+    animation-timing-function: step-end; /* This makes it blink instantly */
+    animation-iteration-count: infinite; /* Makes the animation repeat infinitely */
+    opacity: 0; /* Start with the cursor hidden */
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.Typewriter__cursor {
+    animation: blink 1s infinite; /* Adjust the duration as needed */
+}
