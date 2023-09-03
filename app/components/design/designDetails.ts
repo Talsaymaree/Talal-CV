@@ -62,17 +62,9 @@ export const designs = [
             "Designed artwork for cassette tapes, J-card and laser engravings.",
         image: "/designs/product.webp",
         available: true,
-    },    
+    },     
     {
         id: 8,
-        name: "Pixel Art",
-        description:
-            "Animated pixel sprite for Ch4ins4w created in Asprite.",
-        image: "/designs/pixel.gif",
-        available: true,
-    },    
-    {
-        id: 9,
         name: "Event Poster",
         description:
             "Poster design for 'OPEN BORDER' release event. ",
