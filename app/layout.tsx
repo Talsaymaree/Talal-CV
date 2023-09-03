@@ -10,7 +10,7 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-    metadataBase: new URL("https://www.tee215.com/"),
+    metadataBase: new URL("https://portfolio.tee215.com/"),
     title: "Talal Al-Saymaree Portfolio",
     description:
     "Talal Al-Saymaree's Portfolio - A Showcase of Creative Web Design & Development. With expertise in React and an eye for design, I blend technology and artistry to deliver user-centric digital experiences.",
@@ -46,8 +46,8 @@ export const metadata: Metadata = {
         title: "Talal Al-Saymaree - Designer and Developer",
         description:
       "Designer and Software Engineer, Focused on immersive experiences.",
-        url: "https://www.tee215.com/",
-        siteName: "www.tee215.com",
+        url: "https://portfolio.tee215.com/",
+        siteName: "portfolio.tee215.com",
         images: [
             {
                 url: "./public/metadata.jpg",
