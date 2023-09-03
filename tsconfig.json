@@ -9,7 +9,7 @@
     "lib": [
       "esnext"
     ],
-    "module": "esnext",
+    "module": "nodenext",
     "moduleDetection": "force",
     "moduleResolution": "nodenext",
     "noEmit": true,
@@ -17,9 +17,6 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext",
-    "types": [
-      "bun-types"
-    ],
     "jsx": "preserve",
     "plugins": [
       {
