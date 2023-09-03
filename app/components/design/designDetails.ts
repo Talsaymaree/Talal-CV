@@ -65,7 +65,7 @@ export const designs = [
         available: true,
     },    
     {
-        id: 8,
+        id: 9,
         name: "Product Design",
         description:
             "Designed artwork for cassette tapes, J-card and laser engravings.",
