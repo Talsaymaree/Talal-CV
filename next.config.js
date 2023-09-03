@@ -5,7 +5,6 @@ const outputDir = process.env.BRANCH === 'dev' ? 'dev' : '.next';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   distDir: outputDir,
   compiler: {
     reactRemoveProperties: isProduction,
@@ -15,9 +14,6 @@ const nextConfig = {
       minify: isProduction,
       pure: true,
     },
-  },
-  images: {
-    unoptimized: true,
   },
   devIndicators: {
     buildActivityPosition: "top-right",
