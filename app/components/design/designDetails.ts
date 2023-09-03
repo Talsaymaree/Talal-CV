@@ -55,20 +55,21 @@ export const designs = [
         image: "/designs/merch3.webp",
         available: true,
     },
+
     {
         id: 7,
+        name: "Event Poster",
+        description:
+            "Poster design for 'OPEN BORDER' release event. ",
+        image: "/designs/poster.webp",
+        available: true,
+    },    
+    {
+        id: 8,
         name: "Product Design",
         description:
             "Designed artwork for cassette tapes, J-card and laser engravings.",
         image: "/designs/product.webp",
         available: true,
     },     
-    {
-        id: 9,
-        name: "Event Poster",
-        description:
-            "Poster design for 'OPEN BORDER' release event. ",
-        image: "/designs/poster.webp",
-        available: true,
-    },
 ];
