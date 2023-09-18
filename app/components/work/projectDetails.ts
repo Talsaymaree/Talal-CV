@@ -50,7 +50,7 @@ export const projects = [
         id: 1,
         name: "Tim Horton's Foundation Camps",
         description:
-            "While working for AscendFS I have developed and depoloyed a Canada wide raffle site for Tim Horton's Foundation Camps using Vue.js, Strapi and Graphql following the client's design guideline.",
+            "While working for AscendFS I have developed and deployed a Canada wide raffle site for Tim Horton's Foundation Camps using Vue.js, Strapi and Graphql following the client's design guideline.",
         technologies: [SiStrapi, SiGraphql, SiVuedotjs, SiAwsamplify, SiGit],
         techNames: ["Strapi", "Graphql", "Vue.js", "AWS Amplify", "Git"],
         techLinks: ["https://strapi.io", "https://graphql.org", "https://vuejs.org", "https://aws.amazon.com/amplify/", "https://git-scm.com"],
