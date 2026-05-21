@@ -1,18 +1,34 @@
 import { spaceGrotesk } from "../fonts/spaceGrotesk";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import "./Hero.css";
 import HeroBackground from "../components/background/HeroBackground";
-import React from "react";
+import React, { useRef } from "react";
 import Typewriter from "typewriter-effect";
 
 const Hero = () => {
+    const sectionRef = useRef<HTMLElement>(null);
+    const prefersReducedMotion = useReducedMotion();
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start start", "end start"],
+    });
+    const backgroundY = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? [0, 0] : [0, 120]);
+    const contentY = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? [0, 0] : [0, -70]);
+    const contentOpacity = useTransform(scrollYProgress, [0, 0.72], [1, 0.55]);
+
     return (
         <motion.section
+            ref={sectionRef}
             className="relative z-10 flex h-[100vh] w-full justify-center"
             id="home"
         >
-            <HeroBackground />
-            <div className="relative z-10 mt-10 flex flex-col items-center justify-center gap-4 sm:mt-0">
+            <motion.div className="absolute inset-0 z-0" style={{ y: backgroundY }}>
+                <HeroBackground />
+            </motion.div>
+            <motion.div
+                className="relative z-10 mt-10 flex flex-col items-center justify-center gap-4 sm:mt-0"
+                style={{ y: contentY, opacity: contentOpacity }}
+            >
                 <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -47,7 +63,7 @@ const Hero = () => {
                         }}
                     />
                 </motion.div>
-            </div>
+            </motion.div>
         </motion.section>
     );
 };
