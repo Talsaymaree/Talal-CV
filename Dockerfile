@@ -1,27 +1,28 @@
-# Step 1: Build the React app
-FROM node:18-alpine as builder
+FROM node:22-alpine AS deps
 WORKDIR /app
 
-# Copy package files
-COPY package.json . 
-COPY package-lock.json . 
-RUN npm install
+COPY package.json package-lock.json ./
+RUN npm ci
 
-# Copy the rest of the application
-COPY . . 
+FROM node:22-alpine AS builder
+WORKDIR /app
 
-# Build the React app (output goes to /app/build by default)
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
 RUN npm run build
 
-# Step 2: Serve the app using NGINX
-FROM nginx:1.19.0
+FROM node:22-alpine AS runner
+WORKDIR /app
 
-# Clean default NGINX content
-WORKDIR /usr/share/nginx/html
-RUN rm -rf ./*
+ENV NODE_ENV=production
+ENV PORT=80
 
-# Copy the built React app to the NGINX HTML directory
-COPY --from=builder /app/build .
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev && npm cache clean --force
 
-# Run NGINX
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/next.config.js ./next.config.js
+
+EXPOSE 80
+CMD ["node_modules/.bin/next", "start", "-p", "80"]
