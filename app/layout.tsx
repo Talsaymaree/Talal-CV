@@ -1,6 +1,6 @@
 import "./globals.css";
 import React, { ReactNode } from "react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Syne } from "next/font/google";
 
 const syne = Syne({
@@ -41,7 +41,6 @@ export const metadata: Metadata = {
         "software developer portfolio",
         "frontend engineer portfolio",
     ],
-    colorScheme: "dark",
     openGraph: {
         title: "Talal Al-Saymaree - Designer and Developer",
         description:
@@ -82,6 +81,10 @@ export const metadata: Metadata = {
         },
     },
     category: "technology",
+};
+
+export const viewport: Viewport = {
+    colorScheme: "dark",
 };
 
 type RootLayoutProps = {

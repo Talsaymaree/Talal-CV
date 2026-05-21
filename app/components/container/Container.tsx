@@ -62,11 +62,16 @@ const Container: React.FC<ContainerProps> = ({
     color,
     spotlightColor = "rgba(255, 255, 255, 0.25)", // #ffffff just a bit of white
     accentColor = "rgba(255, 255, 255, 1.0)", // #c673ff Amethyst
+    accent = true,
     blur = true,
+    border = true,
     borderRadius = 0,
+    borderHighlight = true,
     angle,
     baseFrequency = "7",
+    grain = true,
     numOctaves = 3,
+    spotlight = true,
     children,
 }) => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -116,13 +121,15 @@ const Container: React.FC<ContainerProps> = ({
             ref={containerRef}
         >
             {children}
-            <div className="accent" />
-            <div className="spotlight" />
-            <div className="border" />
-            <div className="border-highlight" />
-            <div className="grain">
-                <Grain baseFrequency={baseFrequency} numOctaves={numOctaves} w={width} h={height}/>
-            </div>
+            {accent ? <div className="accent" /> : null}
+            {spotlight ? <div className="spotlight" /> : null}
+            {border ? <div className="border" /> : null}
+            {borderHighlight ? <div className="border-highlight" /> : null}
+            {grain ? (
+                <div className="grain">
+                    <Grain baseFrequency={baseFrequency} numOctaves={numOctaves} w={width} h={height}/>
+                </div>
+            ) : null}
         </div>
     );
 };

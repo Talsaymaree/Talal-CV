@@ -1,87 +1,120 @@
-import React, { useRef } from 'react';
-import AliceCarousel from 'react-alice-carousel';
-import 'react-alice-carousel/lib/alice-carousel.css';
+import React, { useState } from "react";
 import DesignCard from "./DesignCard";
-import { designs, DesignProps } from "./designDetails";
-
-interface CarouselRefType {
-  slidePrev: () => void;
-  slideNext: () => void;
-}
+import { designs } from "./designDetails";
+import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
+import { AnimatePresence, motion } from "framer-motion";
 
 const DesignCarousel = () => {
-    const carouselRef = useRef<CarouselRefType | null>(null);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const activeDesign = designs[activeIndex];
 
-    // Create an array of DesignCard components based on your designs data
-    const designCards = designs.map((design: DesignProps) => (
-        <DesignCard
-            id={design.id}
-            key={design.id}
-            name={design.name}
-            description={design.description}
-            image={design.image}
-            available={design.available}
-        />
-    ));
-
-    // Function to navigate to the previous slide
     const handlePrevClick = () => {
-        if (carouselRef.current) {
-            carouselRef.current.slidePrev();
-        }
+        setActiveIndex((currentIndex) =>
+            currentIndex === 0 ? designs.length - 1 : currentIndex - 1
+        );
     };
 
-    // Function to navigate to the next slide
     const handleNextClick = () => {
-        if (carouselRef.current) {
-            carouselRef.current.slideNext();
-        }
+        setActiveIndex((currentIndex) =>
+            currentIndex === designs.length - 1 ? 0 : currentIndex + 1
+        );
     };
 
     return (
-        <>
-            <div className="my-10 flex gap-4 text-[#e4ded7] md:my-16  lg:my-20 ">
-                <h4 className={`text-[16px] md:text-[20px] lg:text-[34px] ${"text-[#e4ded7]"}`}>
-          Some examples of my design work:
-                </h4>
-            </div>
-            <div className="grid w-[100%] grid-cols-4  gap-x-3  lg:grid-cols-4">
-                {/* Custom Previous Button */}
-                <button className="custom-prev-button" onClick={handlePrevClick}>
-          Previous
-                </button>
-
-                {/* AliceCarousel */}
-                <div className="col-span-2"> {/* Adjust the width as needed */}
-                    <AliceCarousel
-                        ref={carouselRef as React.RefObject<AliceCarousel>} // Assign the ref with the correct type
-                        mouseTracking
-                        items={designCards}
-                        autoPlay
-                        autoPlayInterval={1800}
-                        infinite
-                        disableButtonsControls={true}
-                        autoPlayControls={true}
-                    />
+        <section className="relative z-10 w-full overflow-hidden bg-[#0E1016] pt-16 pb-20 md:pt-20 md:pb-28 lg:pt-20 lg:pb-32">
+            <div className="mx-auto flex w-[90%] max-w-[1200px] items-end justify-between gap-6">
+                <div className="max-w-[620px]">
+                    <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#95979D]">
+                        Selected Design
+                    </p>
+                    <h4 className="text-[16px] text-[#e4ded7] md:text-[20px] lg:text-[34px]">
+                        Some examples of my design work.
+                    </h4>
                 </div>
 
-                {/* Custom Next Button */}
-                <button className="custom-next-button" onClick={handleNextClick}>
-          Next
+                <div className="hidden items-center gap-3 md:flex">
+                    <button
+                        type="button"
+                        aria-label="Previous design"
+                        onClick={handlePrevClick}
+                        className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 text-[#e4ded7] transition-all hover:border-white/35 hover:bg-white/10"
+                    >
+                        <BsArrowLeft className="text-[18px]" />
+                    </button>
+                    <div className="text-[12px] font-semibold uppercase tracking-[0.3em] text-[#95979D]">
+                        {String(activeIndex + 1).padStart(2, "0")} / {String(designs.length).padStart(2, "0")}
+                    </div>
+                    <button
+                        type="button"
+                        aria-label="Next design"
+                        onClick={handleNextClick}
+                        className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 text-[#e4ded7] transition-all hover:border-white/35 hover:bg-white/10"
+                    >
+                        <BsArrowRight className="text-[18px]" />
+                    </button>
+                </div>
+            </div>
+
+            <div className="mx-auto mt-8 w-[90%] max-w-[1200px]">
+                <div className="relative overflow-hidden rounded-[28px]">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activeDesign.id}
+                            initial={{ opacity: 0, y: 24 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -24 }}
+                            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                        >
+                            <DesignCard
+                                id={activeDesign.id}
+                                name={activeDesign.name}
+                                description={activeDesign.description}
+                                image={activeDesign.image}
+                                available={activeDesign.available}
+                            />
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
+            </div>
+
+            <div className="mt-6 flex items-center justify-center gap-3 md:hidden">
+                <button
+                    type="button"
+                    aria-label="Previous design"
+                    onClick={handlePrevClick}
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-[#e4ded7] transition-all hover:border-white/35 hover:bg-white/10"
+                >
+                    <BsArrowLeft className="text-[17px]" />
+                </button>
+                <div className="text-[12px] font-semibold uppercase tracking-[0.3em] text-[#95979D]">
+                    {String(activeIndex + 1).padStart(2, "0")} / {String(designs.length).padStart(2, "0")}
+                </div>
+                <button
+                    type="button"
+                    aria-label="Next design"
+                    onClick={handleNextClick}
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-[#e4ded7] transition-all hover:border-white/35 hover:bg-white/10"
+                >
+                    <BsArrowRight className="text-[17px]" />
                 </button>
             </div>
 
-            {/* Custom CSS for Pause Button */}
-            <style>
-                {`
-          .alice-carousel__play-btn-wrapper {
-            /* Your custom CSS styles for the Pause button here */
-            background-color: transparent;
-            padding: 1px;
-          }
-        `}
-            </style>
-        </>
+            <div className="mt-5 flex items-center justify-center gap-2">
+                {designs.map((design, index) => (
+                    <button
+                        key={design.id}
+                        type="button"
+                        aria-label={`Go to design ${index + 1}`}
+                        onClick={() => setActiveIndex(index)}
+                        className={`h-[6px] rounded-full transition-all ${
+                            activeIndex === index
+                                ? "w-12 bg-[#e4ded7]"
+                                : "w-6 bg-white/15 hover:bg-white/30"
+                        }`}
+                    />
+                ))}
+            </div>
+        </section>
     );
 };
 

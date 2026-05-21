@@ -1,5 +1,4 @@
 import ProjectGrid from "../components/work/ProjectGrid";
-import DesignCarousel from "../components/design/DesignCarousel";
 import React from "react";
 
 const Work = () => {
@@ -13,7 +12,6 @@ const Work = () => {
             </h2>
 
             <ProjectGrid />
-            <DesignCarousel />
         </section>
     );
 };
