@@ -27,7 +27,7 @@ export const designs = [
         id: 2,
         name: "Cassette Tape 3D Promo Render",
         description:
-            "Low poly render used to promoted Midnight II cassette tapes done in PlayStaion One aestethic.",
+            "Low poly render used to promote Midnight II cassette tapes, done in a PlayStation One aesthetic.",
         image: "/designs/lowpolyrender.webp",
         available: true,
     },
@@ -35,7 +35,7 @@ export const designs = [
         id: 3,
         name: "GWC Logo",
         description:
-            "Logo designed for a landscaping company based in California, Los Angles in 2022.",
+            "Logo designed for a landscaping company based in Los Angeles, California in 2022.",
         image: "/designs/gwc.webp",
         available: true,
     },
@@ -49,9 +49,9 @@ export const designs = [
     },
     {
         id: 5,
-        name: "Tshirt Design",
+        name: "T-shirt Design",
         description:
-            "Tshirt design for an electronic music artist done using blender and photoshop.",
+            "T-shirt design for an electronic music artist done using Blender and Photoshop.",
         image: "/designs/merch3.webp",
         available: true,
     },

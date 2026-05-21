@@ -59,7 +59,7 @@ export default class Blobity {
     private stickedToElement: HTMLElement | null = null;
     private stickedToElementMutationObserver: MutationObserver;
     private sticketToElementTooltip: string | null = null;
-    private disablingStickedToElementTimeout: NodeJS.Timeout | null = null;
+    private disablingStickedToElementTimeout: ReturnType<typeof setTimeout> | null = null;
     private isActive = true;
     private globalStyles?: HTMLStyleElement;
     private destroyed = false;

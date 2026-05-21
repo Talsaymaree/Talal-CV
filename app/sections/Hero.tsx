@@ -4,28 +4,49 @@ import "./Hero.css";
 import HeroBackground from "../components/background/HeroBackground";
 import React from "react";
 import Typewriter from "typewriter-effect";
+
 const Hero = () => {
     return (
         <motion.section
             className="relative z-10 flex h-[100vh] w-full justify-center"
             id="home"
-            initial="initial"
-            animate="animate"
         >
             <HeroBackground />
-            <div className="mt-10 flex flex-col items-center justify-center sm:mt-0">
-                <div
-                    className={`relative flex flex-col items-center justify-center ${spaceGrotesk.className} pointer-events-none text-6xl font-bold`}
+            <div className="relative z-10 mt-10 flex flex-col items-center justify-center gap-4 sm:mt-0">
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+                    className={`${spaceGrotesk.className} pointer-events-none text-[11px] font-semibold uppercase tracking-[0.35em] text-[#8F97A3]`}
+                    style={{ textShadow: "0 0 30px rgba(0,0,0,0.9)" }}
                 >
-                    <Typewriter 
+                    Senior Web Engineer
+                </motion.p>
+                <motion.h1
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
+                    className={`${spaceGrotesk.className} pointer-events-none text-center text-[48px] font-bold leading-none tracking-tight text-[#F0F2F5] sm:text-[64px] lg:text-[88px]`}
+                    style={{ textShadow: "0 0 18px rgba(240,242,245,0.18), 0 0 46px rgba(0,0,0,0.95)" }}
+                >
+                    Talal Al-Saymaree
+                </motion.h1>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}
+                    className={`relative flex flex-col items-center justify-center ${spaceGrotesk.className} pointer-events-none text-4xl font-bold text-[#AEB6C1] sm:text-5xl`}
+                >
+                    <Typewriter
                         options={{
-                            strings: ['React.js', 'Vue.js', 'Angular', 'Three.js', 'Photoshop', 'After Effects', 'Firebase', 'Git', 'HTML', 'CSS', 'Material UI', 'UI/UX', '3D Printing', '3D Animation', 'TypeScript', 'JavaScript'],
+                            strings: ['Next.js SSR/ISR', 'React.js', 'API Integration', 'GraphQL / REST', 'Web Performance', 'Core Web Vitals', 'Node.js', 'CI/CD', 'TypeScript', 'WCAG Accessibility', 'Web Security', 'Firebase', 'Vue.js', 'Git'],
                             autoStart: true,
                             loop: true,
                             skipAddStyles: true,
                             cursorClassName: 'Typewriter__cursor',
-                        }}          />
-                </div>
+                        }}
+                    />
+                </motion.div>
             </div>
         </motion.section>
     );

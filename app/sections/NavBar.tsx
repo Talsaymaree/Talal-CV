@@ -13,23 +13,6 @@ const NavBar = () => {
             behavior: "smooth",
         }); };  
 
-    const handleDownload = () => { 
-        fetch("/files/TalalResume.pdf").then(response => {
-            response.blob().then(blob => {
-                // Creating new object of PDF file
-                const fileURL = "/files/TalalResume.pdf";
-                // Setting various property values
-                let alink = document.createElement('a');
-                alink.href = fileURL;
-                alink.download = 'Talal-Resume.pdf';
-                alink.click();
-            });
-        });
-    };
-
-
-
-
     return (
         <nav className="nowrap fixed bottom-10 left-0 right-0 z-50 my-0 mx-auto flex items-center justify-center gap-1 px-1 py-1 text-[#e4ded7] sm:w-[483.3px] md:p-2 lg:w-[591.3px]">
             <Container
@@ -86,16 +69,6 @@ const NavBar = () => {
                         </h4>
                     </Link>
 
-                    <Link
-                        href="#download"
-                        data-blobity-magnetic="false"
-                        onClick={handleDownload}
-                        aria-label="DOWNLOAD CV"
-                    >
-                        <h4 className="py-2 px-2 text-[12px] sm:px-4 sm:text-[14px] md:py-1 md:px-4">
-                        DOWNLOAD CV
-                        </h4>
-                    </Link>
                 </nav>
             </Container>
         </nav>

@@ -33,7 +33,7 @@ const Contact = () => {
                     <div className=" flex w-[350px] max-w-[90%] flex-col items-end text-right text-[14px] font-semibold uppercase text-[#e4ded7] sm:w-[350px] sm:text-[14px] md:w-[310px] md:items-start md:text-left md:text-[16px] lg:w-[420px] lg:text-[16px]">
                         <AnimatedBody
                             text={
-                                "For any inquiries or propsals:"
+                                "For any inquiries or proposals:"
                             }
                             className={
                                 "-mb-1 inline-block overflow-hidden pt-1 sm:-mb-2 md:-mb-3 lg:-mb-4"

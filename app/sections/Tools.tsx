@@ -3,13 +3,13 @@ import "../animations/animate.css";
 import AnimatedBody from "../animations/AnimatedBody";
 import AnimatedTitle from "../animations/AnimatedTitle";
 import {
-    SiAdobeaftereffects, SiAdobefonts,
-    SiAdobeillustrator, SiBlender,
-    SiAdobephotoshop, SiAstro, SiCinema4D, SiCplusplus, SiFigma, SiFramer, SiGit,
+    SiAdobeaftereffects,
+    SiAdobeillustrator,
+    SiAdobephotoshop, SiGit,
     SiGithub, SiStrapi,
-    SiGooglechrome, SiGooglefonts,
     SiFirebase, SiJavascript, SiWordpress, SiVuedotjs,
-    SiNextdotjs, SiReact, SiAngular, SiTypescript, SiGraphql, SiSharp, SiShopify, SiThreedotjs
+    SiNextdotjs, SiNodedotjs, SiReact, SiTypescript, SiGraphql, SiShopify,
+    SiVite, SiAwsamplify, SiStripe, SiPaypal
 } from "react-icons/si";
 import AnimatedTools from "../animations/AnimatedTools.tsx";
 
@@ -21,9 +21,9 @@ const Tools = () => {
         >
             <div className="mx-auto flex w-[90%] flex-col items-center justify-center lg:max-w-[1212.8px]">
                 <AnimatedTitle
-                    text={"TOOLS I'M USING."}
+                    text={"TOOLS I USE."}
                     className={
-                        "mb-10 text-left text-[40px] font-bold leading-[0.9em] tracking-tighter text-[#e4ded7] sm:text-[45px] md:mb-16 md:text-[60px] lg:text-[80px]"
+                        "mb-10 w-full text-left text-[40px] font-bold leading-[0.9em] tracking-tighter text-[#e4ded7] sm:text-[45px] md:mb-16 md:text-[60px] lg:text-[80px]"
                     }
                     wordSpace={"mr-[14px]"}
                     charSpace={"mr-[0.001em]"}
@@ -35,11 +35,8 @@ const Tools = () => {
                         <div>
                             <AnimatedTools className="grid grid-cols-6 gap-4" delay={0.1} stepSize={0.1} iconSize={50}>
                                 <SiAdobephotoshop size={50}/>
+                                <SiAdobeillustrator size={50}/>
                                 <SiAdobeaftereffects size={50}/>
-                                <SiAdobefonts size={50}/>
-                                <SiCinema4D size={50}/>
-                                <SiGooglefonts size={50}/>
-                                <SiBlender size={50}/>
                             </AnimatedTools>
                         </div>
                     </div>
@@ -50,9 +47,9 @@ const Tools = () => {
                                 <SiTypescript size={50}/>
                                 <SiJavascript size={50}/>
                                 <SiReact size={50}/>
-                                <SiAngular size={50}/>
                                 <SiNextdotjs size={50}/>
                                 <SiVuedotjs size={50}/>
+                                <SiVite size={50}/>
                             </AnimatedTools>
                         </div>
                     </div>
@@ -60,22 +57,24 @@ const Tools = () => {
                         <AnimatedBody delay={0.3} text="Backend" />
                         <div>
                             <AnimatedTools className="grid grid-cols-6 gap-4" delay={0.3} stepSize={0.1} iconSize={50}>
+                                <SiNodedotjs size={50}/>
                                 <SiStrapi size={50}/>
-                                <SiSharp size={50}/>
                                 <SiFirebase size={50}/>
+                                <SiGraphql size={50}/>
                             </AnimatedTools>
                         </div>
                     </div>
                     <div className="mb-10 flex w-[100%] flex-col gap-4 text-[18px] font-bold leading-relaxed tracking-wide text-[#e4ded7] md:mb-16 md:gap-6 md:text-[40px] md:leading-relaxed lg:mb-16 lg:w-[50%]">
-                        <AnimatedBody delay={0.4} text="Other" />
+                        <AnimatedBody delay={0.4} text="Platforms & Services" />
                         <div>
                             <AnimatedTools className="grid grid-cols-6 gap-4" delay={0.4} stepSize={0.1} iconSize={50}>
                                 <SiGithub size={50}/>
                                 <SiGit size={50}/>
+                                <SiAwsamplify size={50}/>
                                 <SiShopify size={50}/>
                                 <SiWordpress size={50}/>
-                                <SiGraphql size={50}/>
-                                <SiThreedotjs size={50}/>
+                                <SiStripe size={50}/>
+                                <SiPaypal size={50}/>
                             </AnimatedTools>
                         </div>
                     </div>
