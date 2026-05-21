@@ -2,7 +2,6 @@
 import { ProjectProps } from "./projectDetails";
 import Link from "next/link";
 import React, { useRef, useEffect, useState } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { SiGithub } from "react-icons/si";
 import { BsLink45Deg, BsArrowRight } from "react-icons/bs";
 
@@ -20,17 +19,9 @@ const FeaturedProjectCard = ({
     image,
     caseStudy,
 }: ProjectProps) => {
-    const cardRef = useRef<HTMLDivElement>(null);
     const iframeContainerRef = useRef<HTMLDivElement>(null);
     const [iframeScale, setIframeScale] = useState(0.5);
     const canEmbed = Boolean(iframeUrl && embedAllowed);
-    const prefersReducedMotion = useReducedMotion();
-    const { scrollYProgress } = useScroll({
-        target: cardRef,
-        offset: ["start end", "end start"],
-    });
-    const mediaY = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? [0, 0] : [-46, 46]);
-    const contentY = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? [0, 0] : [20, -18]);
 
     useEffect(() => {
         if (!iframeContainerRef.current || !canEmbed) return;
@@ -46,9 +37,9 @@ const FeaturedProjectCard = ({
     }, [canEmbed]);
 
     return (
-        <div ref={cardRef} className="relative z-10 h-[560px] w-full overflow-hidden rounded-[25px] sm:h-[620px] lg:h-[680px]">
+        <div className="relative z-10 h-[560px] w-full overflow-hidden rounded-[25px] sm:h-[620px] lg:h-[680px]">
             {/* Full-bleed background: iframe or image */}
-            <motion.div ref={iframeContainerRef} className="absolute -inset-y-14 inset-x-0 border-0 outline-none" style={{ y: mediaY }}>
+            <div ref={iframeContainerRef} className="absolute inset-0 border-0 outline-none">
                 {canEmbed ? (
                     <iframe
                         src={iframeUrl}
@@ -77,7 +68,7 @@ const FeaturedProjectCard = ({
                         className="h-full w-full object-cover"
                     />
                 )}
-            </motion.div>
+            </div>
 
             {/* Gradient overlays for readability */}
             <div
@@ -95,7 +86,7 @@ const FeaturedProjectCard = ({
             </div>
 
             {/* Content — bottom left */}
-            <motion.div className="absolute bottom-0 left-0 p-8 lg:p-12" style={{ y: contentY }}>
+            <div className="absolute bottom-0 left-0 p-8 lg:p-12">
                 <h3 className="text-[42px] leading-none text-white sm:text-[52px] lg:text-[62px]">
                     {name}
                 </h3>
@@ -154,7 +145,7 @@ const FeaturedProjectCard = ({
                         </Link>
                     ))}
                 </div>
-            </motion.div>
+            </div>
         </div>
     );
 };

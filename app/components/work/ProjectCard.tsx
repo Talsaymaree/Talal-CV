@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Container from "../container/Container";
 import React, { useRef, useEffect, useState } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { SiGithub } from "react-icons/si";
 import { BsLink45Deg, BsArrowRight } from "react-icons/bs";
 
@@ -25,18 +24,10 @@ const ProjectCard = ({
     caseStudy,
 }: ProjectProps) => {
     const isEven = id % 2 === 0;
-    const cardRef = useRef<HTMLDivElement>(null);
     const iframeContainerRef = useRef<HTMLDivElement>(null);
     const [iframeScale, setIframeScale] = useState(0.3);
     const canEmbed = Boolean(iframeUrl && embedAllowed);
     const hasLivePreview = Boolean(iframeUrl);
-    const prefersReducedMotion = useReducedMotion();
-    const { scrollYProgress } = useScroll({
-        target: cardRef,
-        offset: ["start end", "end start"],
-    });
-    const mediaY = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? [0, 0] : [-30, 30]);
-    const contentY = useTransform(scrollYProgress, [0, 1], prefersReducedMotion ? [0, 0] : [14, -14]);
 
     useEffect(() => {
         if (!iframeContainerRef.current || !canEmbed) return;
@@ -49,7 +40,7 @@ const ProjectCard = ({
     }, [canEmbed]);
 
     return (
-        <div ref={cardRef} className="relative z-10 h-[550px] w-full overflow-hidden rounded-[25px] sm:h-[700px] md:h-[650px] lg:h-[500px]">
+        <div className="relative z-10 h-[550px] w-full overflow-hidden rounded-[25px] sm:h-[700px] md:h-[650px] lg:h-[500px]">
             <Container
                 width="100%"
                 height="100%"
@@ -78,13 +69,12 @@ const ProjectCard = ({
                     />
                 )}
 
-                <motion.div
+                <div
                     className={`absolute text-white ${
                         !isEven
                             ? "right-0 top-32 mr-0 ml-10 md:right-0 md:ml-0 lg:right-0 lg:top-16 lg:mr-4"
                             : "left-10 top-32 ml-0 md:mr-12 lg:top-28 lg:ml-4"
                     } mb-10 md:mb-16 lg:mb-14`}
-                    style={{ y: contentY }}
                 >
                     <h3 className="max-w-[90%] text-[40px] leading-none text-white md:text-[44px] lg:max-w-[450px] lg:text-[48px]">
                         {name}
@@ -145,16 +135,16 @@ const ProjectCard = ({
                             </div>
                         ))}
                     </div>
-                </motion.div>
+                </div>
             </Container>
 
             {hasLivePreview ? (
-                <motion.div
+                <div
                     ref={iframeContainerRef}
                     className={`absolute bottom-0 overflow-hidden rounded-t-xl ring-1 ring-white/10 ${
                         isEven ? "right-0" : "left-0"
                     } w-[70%] sm:w-[85%] md:w-[60%] lg:max-w-[55%]`}
-                    style={{ aspectRatio: "16/10", y: mediaY }}
+                    style={{ aspectRatio: "16/10" }}
                 >
                     <div className="absolute inset-x-0 top-0 z-10 flex h-7 items-center gap-1.5 bg-[#1e1e1e] px-3">
                         <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
@@ -187,7 +177,7 @@ const ProjectCard = ({
                             className="object-cover"
                         />
                     )}
-                </motion.div>
+                </div>
             ) : null}
         </div>
     );
