@@ -5,84 +5,91 @@ import AnimatedTitle from "../animations/AnimatedTitle";
 import {
     SiAdobeaftereffects,
     SiAdobeillustrator,
-    SiAdobephotoshop, SiGit,
-    SiGithub, SiStrapi,
-    SiFirebase, SiJavascript, SiWordpress, SiVuedotjs,
-    SiNextdotjs, SiNodedotjs, SiReact, SiTypescript, SiGraphql, SiShopify,
-    SiVite, SiAwsamplify, SiStripe, SiPaypal
+    SiAdobephotoshop,
+    SiGit,
+    SiGithub,
+    SiStrapi,
+    SiFirebase,
+    SiJavascript,
+    SiWordpress,
+    SiVuedotjs,
+    SiNextdotjs,
+    SiNodedotjs,
+    SiReact,
+    SiTypescript,
+    SiGraphql,
+    SiShopify,
+    SiVite,
+    SiAwsamplify,
+    SiStripe,
+    SiPaypal,
 } from "react-icons/si";
 import AnimatedTools from "../animations/AnimatedTools.tsx";
+
+const toolGroups = [
+    {
+        label: "Design",
+        delay: 0.1,
+        icons: [SiAdobephotoshop, SiAdobeillustrator, SiAdobeaftereffects],
+    },
+    {
+        label: "Frontend",
+        delay: 0.2,
+        icons: [SiTypescript, SiJavascript, SiReact, SiNextdotjs, SiVuedotjs, SiVite],
+    },
+    {
+        label: "Backend",
+        delay: 0.3,
+        icons: [SiNodedotjs, SiStrapi, SiFirebase, SiGraphql],
+    },
+    {
+        label: "Platforms & Services",
+        delay: 0.4,
+        icons: [SiGithub, SiGit, SiAwsamplify, SiShopify, SiWordpress, SiStripe, SiPaypal],
+    },
+];
 
 const Tools = () => {
     return (
         <section
-            className="relative z-10 w-full items-center justify-center overflow-hidden bg-[#0E1016] bg-cover bg-center pt-16 pb-36 md:pt-20 md:pb-44 lg:pt-20 lg:pb-56"
+            className="relative z-10 flex min-h-screen w-full items-center overflow-hidden bg-[#0E1016] bg-cover bg-center py-20 md:py-24 lg:py-28"
             id="tools"
         >
-            <div className="mx-auto flex w-[90%] flex-col items-center justify-center lg:max-w-[1212.8px]">
-                <AnimatedTitle
-                    text={"TOOLS I USE."}
-                    className={
-                        "mb-10 w-full text-left text-[40px] font-bold leading-[0.9em] tracking-tighter text-[#e4ded7] sm:text-[45px] md:mb-16 md:text-[60px] lg:text-[80px]"
-                    }
-                    wordSpace={"mr-[14px]"}
-                    charSpace={"mr-[0.001em]"}
-                />
-
-                <div className="mx-auto w-[100%] lg:max-w-[1200px] justify-center">
-                    <div className="mb-10 flex w-[100%] flex-col gap-4 text-[18px] font-bold leading-relaxed tracking-wide text-[#e4ded7] md:mb-16 md:gap-6 md:text-[40px] md:leading-relaxed lg:mb-16 lg:w-[50%]">
-                        <AnimatedBody delay={0.1} text="Design" />
-                        <div>
-                            <AnimatedTools className="grid grid-cols-6 gap-4" delay={0.1} stepSize={0.1} iconSize={50}>
-                                <SiAdobephotoshop size={50}/>
-                                <SiAdobeillustrator size={50}/>
-                                <SiAdobeaftereffects size={50}/>
-                            </AnimatedTools>
-                        </div>
-                    </div>
-                    <div className="mb-10 flex w-[100%] flex-col gap-4 text-[18px] font-bold leading-relaxed tracking-wide text-[#e4ded7] md:mb-16 md:gap-6 md:text-[40px] md:leading-relaxed lg:mb-16 lg:w-[50%]">
-                        <AnimatedBody delay={0.2} text="Frontend" />
-                        <div>
-                            <AnimatedTools className="grid grid-cols-6 gap-4" delay={0.2} stepSize={0.1} iconSize={50}>
-                                <SiTypescript size={50}/>
-                                <SiJavascript size={50}/>
-                                <SiReact size={50}/>
-                                <SiNextdotjs size={50}/>
-                                <SiVuedotjs size={50}/>
-                                <SiVite size={50}/>
-                            </AnimatedTools>
-                        </div>
-                    </div>
-                    <div className="mb-10 flex w-[100%] flex-col gap-4 text-[18px] font-bold leading-relaxed tracking-wide text-[#e4ded7] md:mb-16 md:gap-6 md:text-[40px] md:leading-relaxed lg:mb-16 lg:w-[50%]">
-                        <AnimatedBody delay={0.3} text="Backend" />
-                        <div>
-                            <AnimatedTools className="grid grid-cols-6 gap-4" delay={0.3} stepSize={0.1} iconSize={50}>
-                                <SiNodedotjs size={50}/>
-                                <SiStrapi size={50}/>
-                                <SiFirebase size={50}/>
-                                <SiGraphql size={50}/>
-                            </AnimatedTools>
-                        </div>
-                    </div>
-                    <div className="mb-10 flex w-[100%] flex-col gap-4 text-[18px] font-bold leading-relaxed tracking-wide text-[#e4ded7] md:mb-16 md:gap-6 md:text-[40px] md:leading-relaxed lg:mb-16 lg:w-[50%]">
-                        <AnimatedBody delay={0.4} text="Platforms & Services" />
-                        <div>
-                            <AnimatedTools className="grid grid-cols-6 gap-4" delay={0.4} stepSize={0.1} iconSize={50}>
-                                <SiGithub size={50}/>
-                                <SiGit size={50}/>
-                                <SiAwsamplify size={50}/>
-                                <SiShopify size={50}/>
-                                <SiWordpress size={50}/>
-                                <SiStripe size={50}/>
-                                <SiPaypal size={50}/>
-                            </AnimatedTools>
-                        </div>
-                    </div>
+            <div className="mx-auto flex w-[90%] flex-col lg:max-w-[1212.8px]">
+                <div className="mb-12 max-w-[760px] md:mb-16">
+                    <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#7E848F]">
+                        Toolchain
+                    </p>
+                    <AnimatedTitle
+                        text={"TOOLS I USE."}
+                        className={
+                            "mb-8 w-full text-left text-[44px] font-bold leading-[0.9em] tracking-tighter text-[#e4ded7] sm:text-[52px] md:text-[68px] lg:text-[92px]"
+                        }
+                        wordSpace={"mr-[14px]"}
+                        charSpace={"mr-[0.001em]"}
+                    />
+                    <p className="max-w-[640px] text-[17px] font-semibold leading-relaxed text-[#7E848F] md:text-[20px]">
+                        Tools grouped by actual role in the work: design assets, frontend implementation, backend services, deployment platforms, commerce, and source control.
+                    </p>
                 </div>
 
-
-
-
+                <div className="grid gap-10 border-t border-white/10 pt-10 md:grid-cols-2">
+                    {toolGroups.map((group, index) => (
+                        <article key={group.label}>
+                            <div className="mb-7 flex items-center justify-between gap-4">
+                                <AnimatedBody delay={group.delay} text={group.label} className="text-[22px] font-bold text-[#e4ded7] md:text-[32px]" />
+                                <span className="text-[12px] font-semibold uppercase tracking-[0.32em] text-[#7E848F]">
+                                    0{index + 1}
+                                </span>
+                            </div>
+                            <AnimatedTools className="grid grid-cols-4 gap-5 text-[#e4ded7] sm:grid-cols-6" delay={group.delay} stepSize={0.08} iconSize={50}>
+                                {group.icons.map((Icon, iconIndex) => (
+                                    <Icon key={iconIndex} size={50} />
+                                ))}
+                            </AnimatedTools>
+                        </article>
+                    ))}
+                </div>
             </div>
         </section>
     );

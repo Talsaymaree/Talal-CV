@@ -46,5 +46,16 @@ body {
 }
 
 body {
-  overflow-y: hidden;
+  overflow-y: auto;
+}
+
+@media (min-width: 1024px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+
+  section[id] {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
 }

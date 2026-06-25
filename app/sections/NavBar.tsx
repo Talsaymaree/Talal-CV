@@ -14,7 +14,7 @@ const NavBar = () => {
         }); };  
 
     return (
-        <nav className="nowrap fixed bottom-10 left-0 right-0 z-50 my-0 mx-auto flex items-center justify-center gap-1 px-1 py-1 text-[#e4ded7] sm:w-[483.3px] md:p-2 lg:w-[591.3px]">
+        <nav className="fixed bottom-4 left-0 right-0 z-50 mx-auto flex w-[calc(100%-1.5rem)] max-w-[591.3px] items-center justify-center gap-1 px-1 py-1 text-[#e4ded7] sm:bottom-8 sm:w-[483.3px] md:p-2 lg:w-[591.3px]">
             <Container
                 width="100%"
                 height="50px"
@@ -24,7 +24,7 @@ const NavBar = () => {
                 left="0px"
                 angle={0}
             >
-                <nav className="nowrap fixed bottom-30 left-0 right-0 z-50 my-0 mx-auto flex items-center justify-center gap-1 rounded-lg px-1 py-1 text-[#e4ded7] sm:w-[483.3px] md:p-2 lg:w-[591.3px]">
+                <div className="flex items-center justify-center gap-1 rounded-lg px-1 py-1 text-[#e4ded7] md:p-2">
                     <Link
                         href="#home"
                         data-blobity-magnetic="false"
@@ -68,8 +68,7 @@ const NavBar = () => {
               CONTACT
                         </h4>
                     </Link>
-
-                </nav>
+                </div>
             </Container>
         </nav>
     );

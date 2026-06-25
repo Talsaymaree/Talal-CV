@@ -87,7 +87,7 @@ const FeaturedProjectCard = ({
 
             {/* Content — bottom left */}
             <div className="absolute bottom-0 left-0 p-8 lg:p-12">
-                <h3 className="text-[42px] leading-none text-white sm:text-[52px] lg:text-[62px]">
+                <h3 className="max-w-full break-words text-[36px] leading-none text-white sm:text-[52px] lg:text-[62px]">
                     {name}
                 </h3>
                 <p className="mt-3 max-w-[520px] text-[15px] font-semibold leading-relaxed text-[#95979D]">

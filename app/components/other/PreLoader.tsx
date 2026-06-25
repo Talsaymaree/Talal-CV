@@ -3,8 +3,12 @@ import gsap from "gsap";
 
 const PreLoader: React.FC = () => {
     useEffect(() => {
+        const hash = window.location.hash.replace("#", "");
+
         document.body.style.overflowY = "hidden";
-        window.scrollTo(0, 0);
+        if (!hash) {
+            window.scrollTo(0, 0);
+        }
 
         gsap.to(".preloader", {
             duration: 1.2,
@@ -12,8 +16,12 @@ const PreLoader: React.FC = () => {
             height: "0vh",
             ease: "Power3.easeOut",
             onComplete: () => {
-                window.scrollTo(0, 0);
                 document.body.style.overflowY = "scroll";
+                if (hash) {
+                    document.getElementById(hash)?.scrollIntoView();
+                } else {
+                    window.scrollTo(0, 0);
+                }
                 gsap.set(".preloader", { display: "none" });
             },
         });

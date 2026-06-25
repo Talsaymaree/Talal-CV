@@ -39,7 +39,6 @@ export type ProjectProps = {
   github: string;
   liveUrl: string;
   image: string;
-  imageClassName?: string;
   iframeUrl?: string;
   embedAllowed?: boolean;
   available: boolean;
@@ -104,7 +103,7 @@ export const projects = [
         techLinks: ["https://strapi.io", "https://graphql.org", "https://vuejs.org", "https://aws.amazon.com/amplify/", "https://git-scm.com"],
         github: "",
         liveUrl: "https://www.timscamps.com/",
-        image: "/projects/tims1.webp",
+        image: "/projects/tims1.png",
         available: true,
         caseStudy: {
             role: "Frontend Developer — Ascend",
@@ -125,7 +124,7 @@ export const projects = [
         techLinks: ["https://wordpress.com", "https://www.shopify.com/ca", "https://html.com", "https://www.w3.org/Style/CSS/Overview.en.html", "https://www.adobe.com/ca/products/photoshop.html", "https://www.adobe.com/ca/products/illustrator.html"],
         github: "",
         liveUrl: "https://www.bomberraffle.com/",
-        image: "/projects/bluebombers.webp",
+        image: "/projects/bluebombers.png",
         available: false,
         caseStudy: {
             role: "Designer & Developer — Ascend",
