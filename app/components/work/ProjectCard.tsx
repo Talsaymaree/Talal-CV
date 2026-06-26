@@ -22,6 +22,7 @@ const ProjectCard = ({
     caseStudy,
 }: ProjectProps) => {
     const isEven = id % 2 === 0;
+    const usesCroppedArtwork = slug === "tims-camps" || slug === "blue-bombers";
     const iframeContainerRef = useRef<HTMLDivElement>(null);
     const [iframeScale, setIframeScale] = useState(0.3);
     const canEmbed = Boolean(iframeUrl && embedAllowed);
@@ -82,7 +83,7 @@ const ProjectCard = ({
 
             <div
                 className={`absolute bottom-0 z-10 p-8 text-white lg:p-10 ${
-                    isEven ? "left-0" : "right-0"
+                    usesCroppedArtwork || isEven ? "left-0" : "right-0"
                 }`}
             >
                 <h3 className="max-w-full break-words text-[34px] leading-none text-white sm:text-[44px] md:max-w-[460px] md:text-[48px] lg:text-[54px]">
